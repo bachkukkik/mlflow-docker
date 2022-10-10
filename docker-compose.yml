@@ -16,11 +16,11 @@ services:
     volumes:
       - minio_volume:/data
   db:
-    image: mysql/mysql-server:5.7
+    image: mysql/mysql-server:latest
     restart: unless-stopped
     container_name: mlflow_db
-    expose:
-      - ${MYSQL_EXPOSE_PORT}
+    ports:
+      - "${MYSQL_EXPOSE_PORT}:3306"
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
